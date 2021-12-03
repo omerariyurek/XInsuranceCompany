@@ -1,0 +1,103 @@
+﻿@{
+    ViewData["Title"] = "Kasko Sigortası";
+}
+@section Scripts
+{
+    <script src="~/lib/jquery-ui/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery-block-ui/jquery.blockUI.js"></script>
+    <script src="~/js/InsuranceOffer/InsuranceOfferIndex.js"></script>
+}
+<div class="container">
+    <h1>Kasko Sigortası</h1>
+</div>
+
+<div class="mt-4" style="height: auto;padding: 32px 0;position: relative;background-color: #f1faff;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <h2 style="color: #004f78;">
+                    Kasko Sigortası Fiyatlarını Sorgulayın, <br class="only-mobile">Bütçenize Uygun Seçeneği
+                    <br class="only-mobile">
+                    Kolayca Bulun!
+                </h2>
+                <ul class="carInsurancePageAvantages">
+                    <li>En iyi sigorta şirketlerinin tekliflerini karşılaştırın</li>
+                    <li>İnternete özel ek indirimlerle online kaskonuzu satın alın</li>
+                    <li>7/24 hasar desteğinden yararlanın</li>
+                </ul>
+                <a class="btn btn-primary mt-3" asp-action="GeneratedOffers" asp-controller="InsuranceOffer">Daha Önce Oluşturulan Teklifleri Sorgulama</a>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="formbox">
+                    <form id="frmCreateInsuranceOffer" asp-controller="InsuranceOffer" asp-action="CreateInsuranceOffer" asp-antiforgery="true" method="post">
+                        <div class="form-group mb-0">
+                            <label>TC Kimlik No</label>
+                            <input name="TcIdentityNo" class="form-control carInsuranceFormInput" id="tcIdentityNo" minlength="10" maxlength="11" placeholder="TCKN Giriniz">
+                            <small class="form-text text-muted">TCKN size özel teklif üretebilmemiz için gerekmektedir.</small>
+                        </div>
+                        <div class="form-group mb-0 mt-2">
+                            <label>Plaka</label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text trPlate">
+                                        TR
+                                    </div>
+                                </div>
+                                <input id="plateNo" name="PlateNo" class="form-control carInsuranceFormInput" placeholder="34 ABC 444">
+                            </div>
+                        </div>
+                        <div class="form-group mb-0  mt-2">
+                            <label>Ruhsat Seri Kodu</label>
+                            <input name="LicenseSerialCode" id="licenseSerialCode" class="form-control carInsuranceFormInput" minlength="1" maxlength="2" placeholder="Ruhsat Seri Kodu">
+                        </div>
+                        <div class="form-group mb-0 mt-2">
+                            <label>Ruhsat Seri No</label>
+                            <input name="LicenseSerialNumber" id="licenseSerialNo" class="form-control carInsuranceFormInput" minlength="5" maxlength="6" placeholder="Ruhsat Seri No">
+                        </div>
+                        <div class="form-group mt-3">
+                            <button class="form-control btn-info btnCarInsuranceFormSubmit" type="submit">Kasko Teklifi Al</button>
+                        </div>
+                    </form>
+                    @*<form id="frmCreateInsuranceOffer" asp-controller="InsuranceOffer" asp-antiforgery="true" asp-action="CreateInsuranceOffer" method="post">
+                            <div class="form-group">
+                                <label asp-for="CreateInsuranceOfferModel.TcIdentityNo">TC Kimlik No</label>
+                                <input asp-for="CreateInsuranceOfferModel.TcIdentityNo" class="form-control carInsuranceFormInput" minlength="10" maxlength="11" placeholder="TCKN  Giriniz">
+                                <span class="text-danger" asp-validation-for="CreateInsuranceOfferModel.TcIdentityNo"></span>
+                                <small class="form-text text-muted">TCKN size özel teklif üretebilmemiz için gerekmektedir.</small>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CreateInsuranceOfferModel.PlateNo">Plaka</label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text trPlate">
+                                            TR
+                                        </div>
+                                    </div>
+                                    <input asp-for="CreateInsuranceOfferModel.PlateNo" class="form-control carInsuranceFormInput" placeholder="34 ABC 444">
+                                </div>
+                                <span class="text-danger" asp-validation-for="CreateInsuranceOfferModel.PlateNo"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CreateInsuranceOfferModel.LicenseSerialCode">Ruhsat Seri Kodu</label>
+                                <input asp-for="CreateInsuranceOfferModel.LicenseSerialCode" class="form-control carInsuranceFormInput" placeholder="Ruhsat Seri Kodu">
+                                <span class="text-danger" asp-validation-for="CreateInsuranceOfferModel.LicenseSerialCode"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CreateInsuranceOfferModel.LicenseSerialNumber">Ruhsat Seri No</label>
+                                <input asp-for="CreateInsuranceOfferModel.LicenseSerialNumber" class="form-control carInsuranceFormInput" placeholder="Ruhsat Seri No">
+                                <span class="text-danger" asp-validation-for="CreateInsuranceOfferModel.LicenseSerialNumber"></span>
+                            </div>
+                            <div class="form-group">
+                                <button class="form-control btn-info btnCarInsuranceFormSubmit" type="submit">Kasko Teklifi Al</button>
+                            </div>
+                        </form>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+</style>

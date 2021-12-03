@@ -1,0 +1,80 @@
+﻿@model XInsuranceCompany.WebUI.Models.InsuranceOffer.OfferDetailViewModel
+@{
+    ViewData["Title"] = "Teklif Detayları";
+}
+<div class="container">
+    <div class="card offerInfoBox">
+        <div style="background-color: #fff;font-weight: bold" class="card-header">
+            Teklif Bilgileri
+            <form style="float: right" asp-controller="InsuranceOffer" asp-action="Offers" asp-antiforgery="true" method="post">
+                <input type="hidden" name="tcIdentityNo" value="@Model.CarInsuranceOffer.IdentificationNumber" />
+                <button type="submit" class="btn btn-info btn-sm">
+                    &#8249; Tekliflerime Dön
+                </button>
+            </form>
+
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered offerInfoTable">
+                <tbody>
+                    <tr>
+                        <td class="w-50"><strong>Araç Sahibi T.C. No : </strong> @(Model.CarInsuranceOffer.IdentificationNumber.Substring(0,3)+"*****"+ Model.CarInsuranceOffer.IdentificationNumber.Substring(Model.CarInsuranceOffer.IdentificationNumber.Length - 3))</td>
+                        <td class="w-50"><strong>Araç Plakası : </strong> @Model.CarInsuranceOffer.Plate</td>
+                    </tr>
+                    <tr>
+                        <td class="w-50"><strong>Ruhsat Seri Kodu : </strong> @Model.CarInsuranceOffer.LicenseSerialCode</td>
+                        <td class="w-50"><strong>Ruhsat Seri Numarası : </strong> @Model.CarInsuranceOffer.LicenseSerialNumber</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card offerInfoBox mt-4 mb-4">
+        <div style="background-color: #fff;font-weight: bold" class="card-header">
+            Teklifler (@Model.CarInsuranceOffer.CarInsuranceOfferDetails.Count adet teklif bulundu)
+        </div>
+        <div class="card-body">
+            @if (Model.CarInsuranceOffer.CarInsuranceOfferDetails.Count == 0)
+            {
+                <div class="card">
+                    <div class="card-body">
+                        <span style="text-align: center">Teklif bulunamadı...</span>
+                    </div>
+                </div>
+            }
+            else
+            {
+                @foreach (var item in Model.CarInsuranceOffer.CarInsuranceOfferDetails.OrderBy(x=>x.OfferPrice))
+                {
+                    <div class="card mt-2">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3 col-md-3 col-lg-2" style="width: 135px; border-right: solid 0.5px rgba(203, 208, 211, .5);">
+                                    <img src="@item.InsuranceCompanyLogo" style="width: 100%">
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <span style="font-weight: bold">
+                                        @item.InsuranceCompanyName
+                                    </span>
+                                    <br/>
+                                    <span>
+                                        @item.OfferDescription
+                                    </span>
+                                </div>
+                                <div class="col-sm-3 col-md-3">
+                                    <div style="text-align: right;font-weight: bold">
+                                        @item.OfferPrice₺
+                                    </div>
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    <br />
+</div>

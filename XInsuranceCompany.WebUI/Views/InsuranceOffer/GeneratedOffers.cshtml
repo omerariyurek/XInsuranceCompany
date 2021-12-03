@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "Oluşturulan Sigorta Tekliflerini Sorgulama";
+}
+@section Scripts
+{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery-block-ui/jquery.blockUI.js"></script>
+    <script src="~/js/InsuranceOffer/GeneratedOffers.js"></script>
+}
+<div class="container">
+    <h1>Oluşturulan Sigorta Tekliflerini Sorgulama</h1>
+</div>
+<div class="mt-4" style="height: auto; padding: 32px 0; position: relative; background-color: #f1faff;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <h2 style="color: #004f78;">
+                    Sizin için daha önce oluşturduğumuz teklifleri sorgulayın
+                </h2>
+                <a class="btn btn-primary mt-3" asp-action="Index" asp-controller="InsuranceOffer">Yeni Kasko Teklifi Al</a>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="formbox">
+                    <form id="frmViewGeneratedOffers" asp-controller="InsuranceOffer" asp-antiforgery="true" asp-action="Offers" method="post">
+                        <div class="form-group mb-0">
+                            <label>TC Kimlik No</label>
+                            <input class="form-control carInsuranceFormInput" name="tcIdentityNo" minlength="10" maxlength="11" placeholder="TCKN Giriniz">
+                            <small class="form-text text-muted">TCKN size özel oluşturulan teklifleri görüntüleyebilmeniz için gerekmektedir.</small>
+                        </div>
+                        <div class="form-group mt-3">
+                            <button class="form-control btn-info btnCarInsuranceFormSubmit" type="submit">Oluşturulan Teklifleri Görüntüle</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

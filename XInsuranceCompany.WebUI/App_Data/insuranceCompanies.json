@@ -1,0 +1,14 @@
+[
+  {
+    "companyName": "A Insurance Company",
+    "offerCalculationServiceUrl": "https://localhost:44305/"
+  },
+  {
+    "companyName": "B Insurance Company",
+    "offerCalculationServiceUrl": "https://localhost:44353/"
+  },
+  {
+    "companyName": "C Insurance Company",
+    "offerCalculationServiceUrl": "https://localhost:44322/"
+  }
+]

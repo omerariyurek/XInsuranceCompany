@@ -1,0 +1,46 @@
+﻿@model XInsuranceCompany.WebUI.Models.InsuranceOffer.OffersViewModel
+@{
+    ViewData["Title"] = "Tekliflerim";
+}
+
+<div class="container">
+    <h1>Tekliflerim</h1>
+</div>
+<div class="container mt-3">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Plaka</th>
+                <th scope="col">Oluşturulma Tarihi</th>
+                <th scope="col" style="width:20%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Offers.Count == 0)
+            {
+                <tr>
+                    <td style="text-align: center" colspan="4">
+                        Teklif bulunamadı.
+                        <a asp-action="Index">
+                            Yeni teklif oluşturmak ister misiniz?
+                        </a>
+                    </td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var item in Model.Offers)
+                {
+                    <tr>
+                        <th scope="row">@item.Plate</th>
+                        <td>@item.CreatedDate.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>
+                            <a asp-controller="InsuranceOffer" asp-action="OfferDetail" asp-route-id="@item.EncryptedId">Teklif Detaylarını Görüntüle</a>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>
